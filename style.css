@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "GSM";
+  src: url("./fonts/versus-ultra_RUS_BY_LYAJKA.otf");
+}
 .head {
   /* background: aquamarine; */
   background: url(./img/1.jpg);
@@ -7,9 +11,11 @@
 }
 body {
   background-color: darkslategray;
+  font-family: "GSM";
+  /* font-size: 30px; */
 }
 .card {
-  min-width: 600px;
+  min-width: 400px;
   height: 320px;
   margin: 50px;
 }
