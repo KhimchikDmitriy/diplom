@@ -54,3 +54,10 @@ footer {
   display: flex;
   color: antiquewhite;
 }
+.search {
+  margin-top: 20px;
+  margin-left: 10%;
+  background-color: cornsilk;
+  width: 80%;
+  border-radius: 30px;
+}

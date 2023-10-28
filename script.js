@@ -33,3 +33,10 @@ fetch("./dop/feedback.html")
   .then((code) => {
     document.querySelector(".feedback").innerHTML = code;
   });
+
+// вставка кода для фильтров
+fetch("./dop/filter.html")
+  .then((resp) => resp.text())
+  .then((code) => {
+    document.querySelector(".filter").innerHTML = code;
+  });
