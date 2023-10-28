@@ -40,3 +40,10 @@ fetch("./dop/filter.html")
   .then((code) => {
     document.querySelector(".filter").innerHTML = code;
   });
+
+// вставка кода для бокового меню каталога
+fetch("./dop/canvas_catalog.html")
+  .then((resp) => resp.text())
+  .then((code) => {
+    document.querySelector(".canvas_catalog").innerHTML = code;
+  });
