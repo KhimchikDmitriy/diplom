@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>diplomwork</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        >
+          <img
+            src="./img/menu.png"
+            alt="Menu"
+            style="width: 33px; height: 33px"
+          />
+        </button>
+      </div>
+      <%- include('canvas.ejs'); -%>
+      <div class="logo">
+        <h1 class="card-title">
+          <span class="">BWP</span>
+        </h1>
+      </div>
+    </header>
+    <div class="search">
+      <input
+        type="text"
+        placeholder="Искать по названию..."
+        style="
+          background-color: #f2f2f2;
+          border: 1px solid #ccc;
+          padding: 8px;
+          font-size: 16px;
+          border-radius: 4px;
+          width: 35%;
+          margin-left: 15px;
+        "
+      />
+      <button href="#" class="btn btn-primary" style="height: 50px">
+        поиск
+      </button>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        фильтр
+      </button>
+      <%- include('filter.ejs'); -%> <%- include('feedback.ejs'); -%>
+      <!-- <%- include('examples.ejs'); -%> -->
+      <div style="display: flex; flex-wrap: wrap">
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img src="./img/examples/dog.gif" class="card-img-top" alt="..." />
+            <div style="display: flex">
+              <p>#mem</p>
+              <p>#cute</p>
+              <p>#animal</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img
+              src="./img/examples/mem1.gif"
+              class="card-img-top"
+              alt="..."
+              style="width: 180px; height: 185px"
+            />
+            <div style="display: flex">
+              <p>#mem</p>
+              <p>#cute</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img src="./img/examples/coin.gif" class="card-img-top" alt="..." />
+            <div style="display: flex">
+              <p>#item</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img
+              src="./img/examples/rabbit.gif"
+              class="card-img-top"
+              alt="..."
+            />
+            <div style="display: flex">
+              <p>#animal</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img src="./img/examples/tank.gif" class="card-img-top" alt="..." />
+            <div style="display: flex">
+              <p>#machine</p>
+              <p>#warhammer</p>
+              <p>#tau</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 100px">
+          <div class="card-body">
+            <img
+              src="./img/examples/taxi_add.gif"
+              class="card-img-top"
+              alt="..."
+              style="width: 270px; height: 270px"
+            />
+            <div style="display: flex">
+              <p>#add</p>
+              <p>#gif</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include('footer.ejs'); -%>
+  <script src="../script.js"></script>
+</html>

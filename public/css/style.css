@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "GSM";
+  src: url("./fonts/versus-ultra_RUS_BY_LYAJKA.otf");
+}
+.head {
+  /* background: aquamarine; */
+  background: url(../img/1.jpg);
+  height: 200px;
+  display: flex;
+  transition: 3s;
+}
+body {
+  background-color: darkslategray;
+  font-family: "GSM";
+  /* font-size: 30px; */
+}
+.card {
+  min-width: 400px;
+  height: 320px;
+  margin: 50px;
+}
+.btn {
+  margin: 25px;
+}
+.logo {
+  height: 100px;
+  padding: 25px;
+  margin-left: 40%;
+  margin-top: 50px;
+  background-color: azure;
+  border-radius: 20px;
+}
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 20px;
+  width: 80%;
+  margin-left: 10%;
+  background: antiquewhite;
+}
+input:invalid {
+  border-color: red;
+}
+.vremenno {
+  width: 50px;
+  height: 50px;
+}
+footer {
+  margin-top: 60px;
+  height: 100px;
+  background: rgb(22, 37, 37);
+  justify-content: center;
+  display: flex;
+  color: antiquewhite;
+}
+.search {
+  margin-top: 20px;
+  margin-left: 10%;
+  background-color: cornsilk;
+  width: 80%;
+  border-radius: 30px;
+}

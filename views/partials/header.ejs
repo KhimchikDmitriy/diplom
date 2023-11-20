@@ -1,0 +1,35 @@
+<header class="head">
+  <div>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasExample"
+      aria-controls="offcanvasExample"
+    >
+      <img src="./img/menu.png" alt="Menu" style="width: 33px; height: 33px" />
+    </button>
+    <%- include('canvas.ejs'); -%>
+  </div>
+  <div class="logo">
+    <h1 class="card-title">
+      <span class="">BWP</span>
+    </h1>
+  </div>
+</header>
+<script>
+  // переменные
+  let b = 0;
+
+  // функция переключения фона хдэра
+  function changeColor() {
+    let back = ["url(./img/1.jpg)", "url(./img/2.png)", "url(./img/3.png)"];
+    let div = document.querySelector(".head");
+    div.style.background = back[b];
+    b++;
+    if (b > back.length) {
+      b = 0;
+    }
+  }
+  setInterval(changeColor, 5000);
+</script>
