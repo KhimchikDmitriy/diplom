@@ -1,0 +1,97 @@
+<div
+  class="modal fade"
+  id="register"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Форма регистрации
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/register"
+          class="container"
+          id="registerForm"
+          method="post"
+        >
+          <div class="row my-3 g-3">
+            <div class="col-sm-6 сol-12">
+              <div class="form-floating">
+                <input
+                  name="name"
+                  type="text"
+                  class="form-control"
+                  id="floatingTextarea"
+                  placeholder="имя фамилия"
+                />
+                <label for="floatingTextarea">Введите своё имя и фамилию</label>
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-4 col-12">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="floatingInput"
+                  name="email"
+                  placeholder="name@example.com"
+                />
+                <label for="floatingInput"
+                  >Введите адрес электронной почты</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-4 col-12">
+              <div class="form-floating">
+                <input
+                  name="age"
+                  type="number"
+                  class="form-control"
+                  id="floatingAge"
+                  placeholder="age"
+                />
+                <label for="floatingAge">Введите Ваш полный возраст</label>
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-6 col-12">
+              <div class="form-floating">
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="password"
+                />
+                <label for="floatingPassword">Введите пароль</label>
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-6 col-12">
+              <button type="submit" class="btn btn-success">
+                Зарегистрироваться
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,84 +5,6 @@
   aria-labelledby="offcanvasExampleLabel"
 >
   <div class="offcanvas-body">
-    <% switch (currentPath) { case "/diplommo": %>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/catalog';"
-      >
-        Каталог примеров работ
-      </button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Сделать заказ</button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Регистрация</button>
-    </div>
-    <% break; case "/catalog": %>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/diplommo';"
-      >
-        Главная страница
-      </button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Сделать заказ</button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Регистрация</button>
-    </div>
-    <% break; case "/registr": %>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/diplommo';"
-      >
-        Главная страница
-      </button>
-    </div>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/catalog';"
-      >
-        Каталог примеров работ
-      </button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Сделать заказ</button>
-    </div>
-    <% break; case "/order": %>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/diplommo';"
-      >
-        Главная страница
-      </button>
-    </div>
-    <div>
-      <button
-        type="button"
-        class="btn btn-light"
-        onclick="window.location.href = '/catalog';"
-      >
-        Каталог примеров работ
-      </button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-light">Регистрация</button>
-    </div>
-    <% break; default: break; } %>
-
     <div>
       <button
         type="button"
@@ -90,8 +12,35 @@
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Связаться с нами
+        Связаться с поддержкой
+      </button>
+    </div>
+    <br />
+    <% if (locals.user) { %>
+    <span class="name"><%= user.email %> </span>
+    <a class="btn btn-outline-success" href="/logout">Выйти</a>
+    <% } else { %>
+    <div>
+      <button
+        type="button"
+        class="btn btn-light"
+        data-bs-toggle="modal"
+        data-bs-target="#login"
+      >
+        Войти
+      </button>
+    </div>
+    <br />
+    <div>
+      <button
+        type="button"
+        class="btn btn-light"
+        data-bs-toggle="modal"
+        data-bs-target="#register"
+      >
+        Зарегистрироваться
       </button>
     </div>
   </div>
+  <% } %> <%- include ('./menu') %>
 </div>
