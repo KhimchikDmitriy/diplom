@@ -34,6 +34,7 @@ function passportFunctionYandex(passport) {
           console.log("...");
           console.log("...");
           console.log("Полчили профиль от Яндекса");
+          console.log("...");
           logger.info("Получили профиль от Яндекса.");
           return done(null, profile);
         });

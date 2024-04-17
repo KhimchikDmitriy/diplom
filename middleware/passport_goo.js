@@ -35,6 +35,7 @@ function passportFunctionGoogle(passport) {
           console.log("...");
           console.log("...");
           console.log("Полчили профиль от Google");
+          console.log("...");
           logger.info("Получили профиль от Google.");
           return done(null, profile);
         });

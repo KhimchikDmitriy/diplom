@@ -29,6 +29,7 @@ function passportFunctionVK(passport) {
           console.log("...");
           console.log("...");
           console.log("Полчили профиль от vk");
+          console.log("...");
           logger.info("Получили профиль от vk.");
           return done(null, profile);
         });
