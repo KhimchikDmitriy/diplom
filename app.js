@@ -52,7 +52,7 @@ app.use(
 // app.use(morgan("tiny"));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
-app.use(messages);
+// app.use(messages);
 app.use(user_session);
 app.use(cookieParser());
 app.use(passport.initialize());

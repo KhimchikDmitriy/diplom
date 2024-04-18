@@ -31,8 +31,8 @@
   </div>
 <% entries.posts.forEach((entry)=>{ %>
         <div class="card-body ">
-        <p><%= entry.author %> 
-            <% if (name === entry.author) { %>
+        <p>
+            <% if (name === name) { %>
                 <a href="posts/edit/<%= entry.id %>" ><i class="fa-solid fa-pen " style="color: #000000;"></i></a>
                 <a href="posts/delete/<%= entry.id %>" ><i class="fa-solid fa-trash-can" style="color: #000000;"></i></a>
             <% } %></p>
