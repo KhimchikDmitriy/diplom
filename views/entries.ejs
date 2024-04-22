@@ -34,6 +34,16 @@
         <p>
             <% if (role === "admin") { %>
                 <a href="posts/edit/<%= entry.id %>" ><i class="fa-solid fa-pen " style="color: #000000;"></i></a>
+                <!-- <div>
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit"
+                  >
+                  <i class="fa-solid fa-pen " style="color: #000000;"></i>
+                  </button>
+                </div> -->
                 <a href="posts/delete/<%= entry.id %>" ><i class="fa-solid fa-trash-can" style="color: #000000;"></i></a>
             <% } %></p>
         <p>
@@ -42,13 +52,16 @@
         <p>
             <%= entry.body %>
         </p>
+        <img src="../uploads/<%= entry.media %>" alt="row">
         </div>
     </br>
 <% }) %>
 <%- include('./partials/loginForm'); -%>
 <%- include('./partials/registerForm'); -%>
 <%- include('./partials/feedback'); -%>
+<%- include('./partials/edit'); -%>
 
 </div>
+
 </body>
 </html>

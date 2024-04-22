@@ -10,9 +10,26 @@ import sqlLogic from "../models/sqlLogic.js";
 import logger from "../logger/index.js";
 import passport from "passport";
 import ensureAuthenticated from "../middleware/isAuthenticated.js";
+import multer from "multer";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
+
+router.post(
+  "/upload",
+  upload.single("media"),
+  ensureAuthenticated,
+  posts.addPost
+);
 
 router.use(favicon(__dirname + "/favicon.ico"));
 
@@ -48,7 +65,7 @@ router.post("/login", login.submit);
 router.get("/logout", login.logout);
 
 router.get("/new", ensureAuthenticated, posts.form);
-router.post("/new", ensureAuthenticated, posts.addPost);
+router.post("/new", upload.single("media"), ensureAuthenticated, posts.addPost);
 
 router.get("/posts/edit/:id", sqlLogic.edit);
 router.post("/posts/edit/:id", sqlLogic.update);
@@ -89,15 +106,6 @@ router.get(
     successRedirect: "/",
     failureRedirect: "/login",
   })
-);
-
-router.get("/auth/github", passport.authenticate("github"));
-router.get(
-  "/auth/github/callback",
-  passport.authenticate("github", { failureRedirect: "/login" }),
-  function (req, res) {
-    res.redirect("/");
-  }
 );
 
 export default router;

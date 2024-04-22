@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1 class="text-center">Создать пост</h1>
-    <form action="/new" class="container" method="post">
+    <form action="/upload" class="container" method="post" enctype="multipart/form-data">
       <div class="row my-3">
         <div class="col-sm-4 col-12">
           <div class="form-floating mb-3">
@@ -32,6 +32,20 @@
               placeholder="Content"
             ></textarea>
             <label for="body">Введите содержание поста</label>
+          </div>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-sm-6 col-12">
+          <div class="form-floating">
+            <label for="media"> </label>
+            <input
+              class="form-control"
+              type="file"
+              name="media"
+              id="media"
+              placeholder="Content"
+            ></input>
           </div>
         </div>
       </div>

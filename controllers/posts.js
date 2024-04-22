@@ -1,5 +1,6 @@
 import connection from "../models/sql.js";
 import logger from "../logger/index.js";
+import multer from "multer";
 
 const form = (req, res) => {
   res.render("posts/new", {
@@ -13,7 +14,7 @@ const form = (req, res) => {
 };
 
 const sql =
-  "CREATE TABLE IF NOT EXISTS posts( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT,author VARCHAR(255) DEFAULT 'guest')";
+  "CREATE TABLE IF NOT EXISTS posts( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT,author VARCHAR(255) DEFAULT 'guest', media TEXT)";
 
 connection.query(sql, (err) => {
   if (err) {
@@ -23,9 +24,25 @@ connection.query(sql, (err) => {
 
 const addPost = (req, res, next) => {
   const { title, body } = req.body;
-  const author = req.session.name
-    ? req.session.name
-    : req.session.passport.user.name;
+  const author = req.session.email
+    ? req.session.email
+    : req.session.passport.user.email;
+  const media = req.file.originalname;
+
+  console.log("...");
+  console.log(media);
+  console.log("...");
+  console.log(req.body);
+
+  let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "./public/uploads");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  });
+  const upload = multer({ storage: storage });
 
   if (!title || !body) {
     console.log("! ! !");
@@ -39,10 +56,11 @@ const addPost = (req, res, next) => {
     return;
   }
 
-  let query = "INSERT INTO posts (title, body, author) VALUES (?, ?, ?)";
+  let query =
+    "INSERT INTO posts (title, body, author, media) VALUES (?, ?, ?, ?)";
   connection.query(
     query,
-    [title, body, author],
+    [title, body, author, media],
     function (err, results, fields) {
       if (err) {
         console.log(err.message);
