@@ -1,0 +1,71 @@
+  <div
+  class="modal fade"
+  id="createPost"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Создать пост</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/upload" class="container" method="post" enctype="multipart/form-data">
+            <div class="row my-3">
+              <div class="col-sm-4 col-12">
+                <div class="form-floating mb-3">
+                  <input
+                    name="title"
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    placeholder="Title"
+                  />
+                  <label for="title">Введите название поста</label>
+                </div>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-sm-6 col-12">
+                <div class="form-floating">
+                  <textarea
+                    class="form-control"
+                    name="body"
+                    id="body"
+                    placeholder="Content"
+                  ></textarea>
+                  <label for="body">Введите содержание поста</label>
+                </div>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-sm-6 col-12">
+                <div class="form-floating">
+                  <label for="media"> </label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    name="media"
+                    id="media"
+                    placeholder="Content"
+                  ></input>
+                </div>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-sm-6 col-12">
+                <button type="submit" class="btn btn-success">Запостить</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

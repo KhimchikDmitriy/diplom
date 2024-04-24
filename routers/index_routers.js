@@ -11,9 +11,11 @@ import logger from "../logger/index.js";
 import passport from "passport";
 import ensureAuthenticated from "../middleware/isAuthenticated.js";
 import multer from "multer";
+import mailFunction from "../middleware/mail.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
+
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/uploads");
@@ -22,6 +24,7 @@ let storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
 const upload = multer({ storage: storage });
 
 router.post(
@@ -30,6 +33,8 @@ router.post(
   ensureAuthenticated,
   posts.addPost
 );
+
+router.post("/mailSupport", mailFunction.mailFunction);
 
 router.use(favicon(__dirname + "/favicon.ico"));
 
