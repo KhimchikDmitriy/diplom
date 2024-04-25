@@ -32,6 +32,7 @@
       </button>
     </div>
   </div>
+
   <% if (role === "admin") { %>
 
     <div>
@@ -58,7 +59,7 @@
         <p>
             <%= entry.body %>
         </p>
-        <img src="../uploads/<%= entry.media %>" alt="row">
+          <img src="../uploads/<%= entry.media %>" >
         </div>
     </br>
 <% }) %>

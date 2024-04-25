@@ -22,7 +22,7 @@ class User {
 
   static create(dataForm, cb) {
     const sql =
-      "INSERT INTO user (name, email, password, age, role) VALUES (?, ?, ?, ?, 'guest')";
+      "INSERT INTO user (name, email, password, age, role) VALUES (?, ?, ?, ?, 'user')";
     const { name, email, password, age } = dataForm;
     connection.query(sql, [name, email, password, age], (err) => {
       if (err) {

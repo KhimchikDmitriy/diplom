@@ -30,19 +30,8 @@ app.set("\views", __dirname + "views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
-app.use(
-  "/bootstrap.css",
-  express.static(
-    join(__dirname, "public/css/bootstrap-5.3.2/dist/css/bootstrap.css")
-  )
-);
 app.use("publics", express.static(join(__dirname, "public/")));
-app.use(
-  "/bootstrap.js",
-  express.static(
-    join(__dirname, "public/css/bootstrap-5.3.2/dist/js/bootstrap.js")
-  )
-);
+
 app.use(
   session({
     secret: process.env.SECRET,

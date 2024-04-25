@@ -4,6 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
+import zag from "../controllers/zag.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import sqlLogic from "../models/sqlLogic.js";
@@ -60,6 +61,27 @@ router.get("/entries", entries.form, (req, res) => {
   });
 });
 router.post("/entries", entries.submit);
+
+router.get("/chat", zag.form, (req, res) => {
+  posts.getPosts((err, posts) => {
+    if (err) {
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("ошибка ");
+      console.log("! ! !");
+      console.log("! ! !");
+      logger.error("Ошибка захода на страницу");
+      console.log(err.message);
+    } else {
+      res.render("main", {
+        title: "Главная страница",
+        posts: posts,
+      });
+    }
+  });
+});
+router.post("/chat", zag.submit);
 
 router.get("/register", register.form);
 router.post("/register", register.submit);
