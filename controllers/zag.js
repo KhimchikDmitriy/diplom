@@ -19,7 +19,7 @@ const list = (req, res, next) => {
 };
 
 const form = (req, res, next) => {
-  res.render("post", { title: "Post" });
+  res.render("chat", { title: "Post" });
 };
 
 const submit = (req, res, next) => {
@@ -34,7 +34,7 @@ const submit = (req, res, next) => {
     };
 
     Entry.create(entry);
-    res.redirect("/");
+    res.redirect("/chat");
   } catch (err) {
     console.log("! ! !");
     console.log("! ! !");

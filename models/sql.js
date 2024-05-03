@@ -18,13 +18,19 @@ connection.connect((err) => {
   logger.info("произведено соеденение с базой данных");
 
   let sql =
-    "CREATE TABLE IF NOT EXISTS posts( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT,author VARCHAR(255) DEFAULT 'guest', media TEXT)";
+    "CREATE TABLE IF NOT EXISTS posts ( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT,author VARCHAR(255) DEFAULT 'guest', media TEXT)";
   connection.query(sql, function (err, result) {
     if (err) throw err;
   });
 
   sql =
     "CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(50), age INT NOT NULL, role VARCHAR(50) DEFAULT 'user')";
+  connection.query(sql, function (err, result) {
+    if (err) throw err;
+  });
+
+  sql =
+    "CREATE TABLE IF NOT EXISTS messages ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, body TEXT, whom VARCHAR(255), media TEXT)";
   connection.query(sql, function (err, result) {
     if (err) throw err;
   });

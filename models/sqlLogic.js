@@ -39,7 +39,7 @@ const update = (req, res) => {
         logger.error("Ошибка в работе sql операция update");
         console.log(err.message);
       } else {
-        res.redirect("/");
+        res.redirect("back");
         console.log("...");
         console.log("операция проведена успешно");
         console.log("...");
@@ -61,7 +61,7 @@ const deleted = (req, res) => {
       logger.error("Ошибка в работе sql операция delete");
       console.log(err.message);
     } else {
-      res.redirect("/");
+      res.redirect("back");
       console.log("...");
       console.log("операция проведена успешно");
       console.log("...");

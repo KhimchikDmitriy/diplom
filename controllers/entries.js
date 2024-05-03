@@ -9,6 +9,7 @@ const list = (req, res, next) => {
       name: req.session.name,
       email: req.session.email,
       role: req.session.role,
+      media: req.session.media,
       entries: entries,
     });
     console.log("...");

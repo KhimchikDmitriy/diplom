@@ -13,7 +13,6 @@
 </head>
 <body>
     <div class="container">
-        <%- include('./partials/header'); -%>
         <form action="/mailSupport" method="post">
           <input type="submit" value="">
         </form>
@@ -27,9 +26,9 @@
           аль видео, но мне лень.
         </p>
       </div>
-      <button href="#" class="btn btn-primary" style="height: 50px">
-        Заказать.
-      </button>
+      <div class="btn" style="height: 50px">
+        <%- include('./partials/canvas'); -%>
+      </div >
     </div>
   </div>
 

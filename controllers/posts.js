@@ -27,9 +27,7 @@ const addPost = (req, res, next) => {
   const author = req.session.email
     ? req.session.email
     : req.session.passport.user.email;
-  const originalName = undefined ? req.file.originalname : " ";
-  const noName = " ";
-  const media = originalName ? originalName : noName;
+  const media = req.file.originalname;
 
   let storage = multer.diskStorage({
     destination: function (req, file, cb) {

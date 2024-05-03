@@ -14,7 +14,7 @@ const form = (req, res) => {
 };
 
 const sql =
-  "CREATE TABLE IF NOT EXISTS messages( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, body TEXT, for VARCHAR(255), media TEXT)";
+  "CREATE TABLE IF NOT EXISTS messages ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, body TEXT, for VARCHAR(255), media TEXT)";
 
 connection.query(sql, (err) => {
   if (err) {

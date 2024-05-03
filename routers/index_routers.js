@@ -62,7 +62,7 @@ router.get("/entries", entries.form, (req, res) => {
 });
 router.post("/entries", entries.submit);
 
-router.get("/chat", zag.form, (req, res) => {
+router.get("/chat", zag.list, (req, res) => {
   posts.getPosts((err, posts) => {
     if (err) {
       console.log("! ! !");
