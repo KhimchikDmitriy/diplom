@@ -1,151 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title><%= title %> </title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<html>
+  <head>
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <%- include('./partials/header'); -%>
-  
-        <% if (role === "admin") { %>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <br />
+<a class="btn btn-success" href="/"> На главную страницу</a>
+<br />
+<% entries.posts.forEach(function(entry) { %>
+  <br />
 
-          <div>
-            <button
-              type="button"
-              class="btn btn-light"
-              data-bs-toggle="modal"
-              data-bs-target="#createPost"
-            >
-              Cоздать пост
-            </button>
-          </div>
-      <% } %>
-      <% entries.posts.forEach((entry)=>{ %>
-              <div class="card-body ">
-              <p>
-                  <% if (role === "admin") { %>
-                      <a href="posts/edit/<%= entry.id %>" ><i class="fa-solid fa-pen " style="color: #000000;"></i></a>
-                      <a href="posts/delete/<%= entry.id %>" ><i class="fa-solid fa-trash-can" style="color: #000000;"></i></a>
-                  <% } %></p>
-              <p>
-                  <%= entry.title %>
-              </p>
-              <p>
-                  <%= entry.body %>
-              </p>
-                <img src="../uploads/<%= entry.media %>" >
-              </div>
-          </br>
-      <% }) %>
+        <% if (entry.title === "message") { %>
+            <div class="message">
+                <p class="delete-link">
+                    <a href="posts/delete/<%= entry.id %>"><i class="fa-solid fa-trash-can"></i></a>
+                </p>
+                <p class="message-body"><p><%= entry.author %></p><%= entry.body %></p>
+                <% if (entry.media) { %>
+                    <img src="../uploads/<%= entry.media %>" class="message-image" />
+                    <a href="../uploads/<%= entry.media %>" download>Скачать файл</a>
+                <% } %>
+            </div>
+            <br />
+        <% } %>
+    <% }); %>
 
-<div class="chat-input">
-  <input type="text" placeholder="Type your message here...">
-  <button class="send-btn">Send</button>
-  <input type="file" id="fileInput" style="display: none;">
-  <label for="fileInput" class="attach-btn">Attach File</label>
-</div>
-<form action="/upload" class="container" method="post" enctype="multipart/form-data">
-  <div class="row my-3">
-    <div class="col-sm-4 col-12">
-      <div class="form-floating mb-3">
-        <input
-          name="title"
-          type="text"
-          class="form-control"
-          id="title"
-          placeholder="Title"
-        />
-        <label for="title">Введите название поста</label>
-      </div>
-    </div>
-  </div>
-  <div class="row my-3">
-    <div class="col-sm-6 col-12">
-      <div class="form-floating">
-        <textarea
-          class="form-control"
-          name="body"
-          id="body"
-          placeholder="Content"
-        ></textarea>
-        <label for="body">Введите содержание поста</label>
-      </div>
-    </div>
-  </div>
-  <div class="row my-3">
-    <div class="col-sm-6 col-12">
-      <div class="form-floating">
-        <label for="media"> </label>
-        <input
-          class="form-control"
-          type="file"
-          name="media"
-          id="media"
-          placeholder="Content"
-        ></input>
-      </div>
-    </div>
-  </div>
-  <div class="row my-3">
-    <div class="col-sm-6 col-12">
-      <button type="submit" class="btn btn-success">Запостить</button>
-    </div>
-  </div>
-</form>
+    <%- include('./partials/loginForm'); -%>
+    <%- include('./partials/registerForm'); -%>
+    <%- include('./partials/feedback'); -%>
+    <%- include('./partials/edit'); -%>
+    <%- include('./partials/social'); -%>
+    <%- include('./partials/createPost'); -%>
 
-
-<%- include('./partials/loginForm'); -%>
-<%- include('./partials/registerForm'); -%>
-<%- include('./partials/feedback'); -%>
-<%- include('./partials/edit'); -%>
-<%- include('./partials/social'); -%>
-<%- include('./partials/createPost'); -%>
-
-</div>
-
+    <form action="/upload/message" method="post" enctype="multipart/form-data">
+        <input type="text" name="body" id="body" placeholder="Введите сообщение..." />
+        <button type="submit">Отправить</button>
+        <input type="file" name="media" id="media" placeholder="Content" />
+    </form>
 </body>
 
-<style>
-  .chat-input {
-    display: flex;
-    align-items: center;
-    background: #f4f4f4;
-    padding: 10px;
-}
+  <style>
+    form {
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #f7f7f7;
+    }
 
-.chat-input input[type="text"] {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      outline: none;
+      box-sizing: border-box;
+    }
 
-.chat-input .send-btn {
-    padding: 8px 15px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #3498db;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
 
-.chat-input .attach-btn {
-    padding: 8px 15px;
-    background: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-</style>
+    button[type="submit"]:hover {
+      background-color: #2980b9;
+    }
 
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .message {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #f7f7f7;
+    }
+
+    .message .delete-link {
+      float: right;
+    }
+
+    .message .message-body {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .message img.message-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </html>

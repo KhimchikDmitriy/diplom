@@ -29,10 +29,16 @@ let storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post(
-  "/upload",
+  "/upload/post",
   upload.single("media"),
   ensureAuthenticated,
   posts.addPost
+);
+router.post(
+  "/upload/message",
+  upload.single("media"),
+  ensureAuthenticated,
+  posts.addMessage
 );
 
 router.post("/mailSupport", mailFunction.mailFunction);

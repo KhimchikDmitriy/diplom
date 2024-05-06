@@ -22,21 +22,6 @@
     <h1 class="text-center">Редактировать пост</h1>
     <form action="/posts/edit/<%= post.id %>" class="container" method="post">
       <div class="row my-3">
-        <div class="col-sm-4 col-12">
-          <div class="form-floating mb-3">
-            <input
-              name="title"
-              type="text"
-              class="form-control"
-              id="title"
-              placeholder="Title"
-              value="<%= post.title %>"
-            />
-            <label for="title">Введите новое название поста</label>
-          </div>
-        </div>
-      </div>
-      <div class="row my-3">
         <div class="col-sm-6 col-12">
           <div class="form-floating">
             <textarea

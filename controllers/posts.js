@@ -14,7 +14,7 @@ const form = (req, res) => {
 };
 
 const sql =
-  "CREATE TABLE IF NOT EXISTS posts( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT,author VARCHAR(255) DEFAULT 'guest', media TEXT)";
+  "CREATE TABLE IF NOT EXISTS posts ( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255) NOT NULL, body TEXT, author VARCHAR(255) DEFAULT 'user', media TEXT, whom  VARCHAR(255))";
 
 connection.query(sql, (err) => {
   if (err) {
@@ -23,11 +23,12 @@ connection.query(sql, (err) => {
 });
 
 const addPost = (req, res, next) => {
-  const { title, body } = req.body;
-  const author = req.session.email
-    ? req.session.email
-    : req.session.passport.user.email;
-  const media = req.file.originalname;
+  const { body } = req.body;
+  const author = req.session.name
+    ? req.session.name
+    : req.session.passport.user.displayName;
+  const media = req.file ? req.file.originalname : "";
+  let title = "post";
 
   let storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -39,7 +40,7 @@ const addPost = (req, res, next) => {
   });
   const upload = multer({ storage: storage });
 
-  if (!title || !body) {
+  if (!body) {
     console.log("! ! !");
     console.log("! ! !");
     console.log("! ! !");
@@ -47,7 +48,7 @@ const addPost = (req, res, next) => {
     console.log("! ! !");
     console.log("! ! !");
     logger.error("Не заполнены поля для создания поста");
-    res.redirect("/new");
+    res.redirect("/");
     return;
   }
 
@@ -59,7 +60,7 @@ const addPost = (req, res, next) => {
     function (err, results, fields) {
       if (err) {
         console.log(err.message);
-        res.redirect("/new");
+        res.redirect("/");
         console.log("! ! !");
         console.log("! ! !");
         console.log("! ! !");
@@ -73,6 +74,64 @@ const addPost = (req, res, next) => {
         console.log("успешное создание поста");
         console.log("...");
         logger.info("Пост создан " + author);
+      }
+    }
+  );
+};
+
+const addMessage = (req, res, next) => {
+  const { body } = req.body;
+  const author = req.session.name
+    ? req.session.name
+    : req.session.passport.user.displayName;
+  const media = req.file ? req.file.originalname : "";
+  let title = "message";
+  const whom = " ";
+
+  let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "./public/uploads");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  });
+  const upload = multer({ storage: storage });
+
+  if (!body) {
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("Все поля должны быть заполнены!");
+    console.log("! ! !");
+    console.log("! ! !");
+    logger.error("Не заполнены поля для создания поста");
+    res.redirect("/chat");
+    return;
+  }
+
+  let query =
+    "INSERT INTO posts (title, body, author, media, whom) VALUES (?, ?, ?, ?, ?)";
+  connection.query(
+    query,
+    [title, body, author, media, whom],
+    function (err, results, fields) {
+      if (err) {
+        console.log(err.message);
+        res.redirect("/chat");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("ошибка ");
+        console.log("! ! !");
+        console.log("! ! !");
+        logger.error("Ошибка создания сообщения");
+      } else {
+        res.redirect("/chat");
+        console.log("...");
+        console.log("успешное создание сообщения");
+        console.log("...");
+        logger.info("Сообщение создано " + author);
       }
     }
   );
@@ -101,4 +160,4 @@ function getPosts(callback) {
   });
 }
 
-export default { form, addPost, getPosts };
+export default { form, addPost, getPosts, addMessage };

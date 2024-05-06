@@ -5,16 +5,16 @@ const list = (req, res, next) => {
   Entry.selectAll((err, entries) => {
     if (err) return next(err);
     res.render("chat", {
-      title: "Главная страница",
+      title: "chat",
       name: req.session.name,
       email: req.session.email,
       role: req.session.role,
       entries: entries,
     });
     console.log("...");
-    console.log("заход на /");
+    console.log("заход на /chat");
     console.log("...");
-    logger.info("Заход на главную страницу");
+    logger.info("Заход на страницу chat");
   });
 };
 
