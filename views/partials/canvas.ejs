@@ -5,7 +5,7 @@
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    Выбрать способ Связаться с нами
+    Написать нам
   </button>
   <ul class="dropdown-menu">
     <div>
@@ -21,7 +21,6 @@
 
     <br />
     <% if (locals.user) { %>
-    <span class="name"><%= user.displayName %> </span>
     <a class="btn btn-light" href="/logout">Выйти</a>
     <% } else { %>
     <div>

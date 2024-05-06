@@ -5,7 +5,7 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Форма входа</h1>
@@ -19,33 +19,27 @@
       <div class="modal-body">
         <form action="/login" class="container" method="post">
           <div class="row my-3">
-            <div class="col-sm-4 col-12">
-              <div class="form-floating mb-3">
-                <input
-                  name="loginForm[email]"
-                  type="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                />
-                <label for="floatingInput"
-                  >Введите адрес электронной почты</label
-                >
-              </div>
+            <div class="form-floating mb-3">
+              <input
+                name="loginForm[email]"
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Введите адрес электронной почты</label>
             </div>
           </div>
           <div class="row my-3">
-            <div class="col-sm-6 col-12">
-              <div class="form-floating">
-                <input
-                  name="loginForm[password]"
-                  type="password"
-                  class="form-control"
-                  id="floatingPassword"
-                  placeholder="password"
-                />
-                <label for="floatingPassword">Введите пароль</label>
-              </div>
+            <div class="form-floating">
+              <input
+                name="loginForm[password]"
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="password"
+              />
+              <label for="floatingPassword">Введите пароль</label>
             </div>
           </div>
           <div class="row my-3">
@@ -54,26 +48,25 @@
             </div>
           </div>
         </form>
-          <div>
-            <button
-              type="button"
-              class="btn btn-light"
-              data-bs-toggle="modal"
-              data-bs-target="#social"
-            >
-              Войти через социальные сети
-            </button>
-          </div>
-          <div>
-            <button
-              type="button"
-              class="btn btn-light"
-              data-bs-toggle="modal"
-              data-bs-target="#register"
-            >
-              Зарегистрироваться на сайте
-            </button>
-          </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-light"
+            data-bs-toggle="modal"
+            data-bs-target="#social"
+          >
+            Войти через социальные сети
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-light"
+            data-bs-toggle="modal"
+            data-bs-target="#register"
+          >
+            Зарегистрироваться на сайте
+          </button>
         </div>
       </div>
     </div>

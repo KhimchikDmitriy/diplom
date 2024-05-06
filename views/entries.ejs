@@ -21,21 +21,78 @@
   <body>
     <br />
     <div class="container">
-      <div style="display: flex; justify-content: center">
+      <div style="max-width: 600px; margin-left: 25%">
         <div class="card">
-          <div class="card-header">Немного заголовка</div>
+          <div class="card-header">Приветствуем Вас!</div>
           <div class="card-body">
-            <h5 class="card-title">Здесь тоже</h5>
+            <h5 class="card-title">
+              Для заказа работы потребуется связаться с нами
+            </h5>
             <p class="card-text">
-              А здесь должен быть текст, призывающий купить здесь анимацию,
-              гифку или видео, но мне лень.
+              Вы можете связаться с нами на нашем сайте здесь, авторизовавшись,
+              отправить нам сообщение через поддержку или связаться с нами через
+              социальные сети.
             </p>
+            <p class="d-inline-flex gap-1">
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="fa-brands fa-telegram"></i>
+              </button>
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample3"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </button>
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample2"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="fa-brands fa-vk"> </i>
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p>Telegram:</p>
+                <p>@DimaHima</p>
+                <p>t.me/DimaHima</p>
+              </div>
+            </div>
+            <div class="collapse" id="collapseExample2">
+              <div class="card card-body">
+                <p>Vkontakte:</p>
+                <p>@khimchik</p>
+                <p>vk.com/khimchik</p>
+              </div>
+            </div>
+            <div class="collapse" id="collapseExample3">
+              <div class="card card-body">
+                <p>WhatsApp:</p>
+                <p>+7(996)771-37-21</p>
+              </div>
+            </div>
+            <br />
           </div>
           <div class="btn" style="height: 50px">
             <%- include('./partials/canvas'); -%>
           </div>
         </div>
       </div>
+      <a class="btn btn-success" href="/chat"> На временную страницу чата</a>
       <% if (role === "admin") { %>
       <div>
         <button
