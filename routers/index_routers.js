@@ -4,7 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
-import zag from "../controllers/zag.js";
+import chat from "../controllers/chat.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import sqlLogic from "../models/sqlLogic.js";
@@ -12,7 +12,7 @@ import logger from "../logger/index.js";
 import passport from "passport";
 import ensureAuthenticated from "../middleware/isAuthenticated.js";
 import multer from "multer";
-import mailFunction from "../middleware/mail.js";
+import mail from "../middleware/mail.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -41,7 +41,7 @@ router.post(
   posts.addMessage
 );
 
-router.post("/mailSupport", mailFunction.mailFunction);
+router.post("/mailSupport", mail.mailFunction);
 
 router.use(favicon(__dirname + "/favicon.ico"));
 
@@ -68,7 +68,7 @@ router.get("/entries", entries.form, (req, res) => {
 });
 router.post("/entries", entries.submit);
 
-router.get("/chat", zag.list, (req, res) => {
+router.get("/chat", chat.list, (req, res) => {
   posts.getPosts((err, posts) => {
     if (err) {
       console.log("! ! !");
@@ -87,7 +87,7 @@ router.get("/chat", zag.list, (req, res) => {
     }
   });
 });
-router.post("/chat", zag.submit);
+router.post("/chat", chat.submit);
 
 router.get("/register", register.form);
 router.post("/register", register.submit);

@@ -1,21 +1,23 @@
+import express from "express";
 import nodemailer from "nodemailer";
 import "dotenv/config.js";
 
-const mailFunction = () => {
+const mailFunction = (req, res, next) => {
   try {
+    const { name, email, message } = req.body;
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: "dimahima14@gmail.com",
-        pass: "qpjhkjfihiocuzwv",
+        pass: process.env.MAIL_PASS,
       },
     });
 
     let mailOptions = {
       from: "dimahima14@gmail.com",
       to: "warcraftdimahima@gmail.com",
-      subject: "Support moment",
-      text: "req.body.message",
+      subject: name,
+      html: "Вам отправленно письмо от " + email + " с текстом: " + message,
     };
 
     transporter.sendMail(mailOptions, function (err, data) {
