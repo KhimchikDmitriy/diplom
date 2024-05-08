@@ -28,6 +28,12 @@ connection.connect((err) => {
   connection.query(sql, function (err, result) {
     if (err) throw err;
   });
+
+  sql =
+    "CREATE TABLE IF NOT EXISTS chat (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL)";
+  connection.query(sql, function (err, result) {
+    if (err) throw err;
+  });
 });
 
 export default connection;

@@ -29,6 +29,7 @@ class Entry {
   static selectAll(cb) {
     const sqlPosts = "SELECT * FROM posts";
     const sqlUsers = "SELECT * FROM user";
+    const sqlChat = "SELECT * FROM chat";
 
     connection.query(sqlPosts, (err, posts) => {
       if (err) {
@@ -40,7 +41,14 @@ class Entry {
             console.log(err);
             cb(err, null);
           } else {
-            cb(null, { posts, users });
+            connection.query(sqlChat, (err, chat) => {
+              if (err) {
+                console.log(err);
+                cb(err, null);
+              } else {
+                cb(null, { posts, users, chat });
+              }
+            });
           }
         });
       }

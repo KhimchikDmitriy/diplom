@@ -8,7 +8,7 @@ function passportFunctionGoogle(passport) {
     newUser.id = user.id;
     newUser.email = user.emails[0].value;
     newUser.name = user.displayName;
-    // newUser.age = user.birthday ? date.now() - user.birthday : 0;
+    newUser.age = user.birthday ? date.now() - user.birthday : 0;
     done(null, user);
   });
 
@@ -21,7 +21,8 @@ function passportFunctionGoogle(passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:80/auth/google/callback",
+        callbackURL:
+          "http://localhost:" + process.env.PORT + "/auth/google/callback",
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {

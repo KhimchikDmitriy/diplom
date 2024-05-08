@@ -21,7 +21,8 @@ function passportFunctionYandex(passport) {
       {
         clientID: process.env.YANDEX_CLIENT_ID,
         clientSecret: process.env.YANDEX_CLIENT_SECRET,
-        callbackURL: "http://localhost:80/auth/yandex/callback",
+        callbackURL:
+          "http://localhost:" + process.env.PORT + "/auth/yandex/callback",
       },
       function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...

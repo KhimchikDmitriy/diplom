@@ -13,6 +13,7 @@ import passport from "passport";
 import ensureAuthenticated from "../middleware/isAuthenticated.js";
 import multer from "multer";
 import mail from "../middleware/mail.js";
+import { title } from "process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -28,12 +29,17 @@ let storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+router.post("/table", (req, res) => {
+  req.session.select = req.body.select;
+  res.redirect("/chat");
+});
 router.post(
   "/upload/post",
   upload.single("media"),
   ensureAuthenticated,
   posts.addPost
 );
+
 router.post(
   "/upload/message",
   upload.single("media"),
@@ -68,25 +74,7 @@ router.get("/entries", entries.form, (req, res) => {
 });
 router.post("/entries", entries.submit);
 
-router.get("/chat", chat.list, (req, res) => {
-  posts.getPosts((err, posts) => {
-    if (err) {
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("ошибка ");
-      console.log("! ! !");
-      console.log("! ! !");
-      logger.error("Ошибка захода на страницу");
-      console.log(err.message);
-    } else {
-      res.render("main", {
-        title: "Главная страница",
-        posts: posts,
-      });
-    }
-  });
-});
+router.get("/chat", chat.list);
 router.post("/chat", chat.submit);
 
 router.get("/register", register.form);

@@ -87,12 +87,16 @@
             </div>
             <br />
           </div>
+          <% if (locals.user) { %>
+          <div class="btn" style="height: 50px">
+            <a class="btn btn-success" href="/chat"> Написать нам</a>
+          </div>
+          <% } %>
           <div class="btn" style="height: 50px">
             <%- include('./partials/canvas'); -%>
           </div>
         </div>
       </div>
-      <a class="btn btn-success" href="/chat"> На временную страницу чата</a>
       <% if (role === "admin") { %>
       <div>
         <button
@@ -126,8 +130,7 @@
       <% } %> <% }) %> <%- include('./partials/loginForm'); -%> <%-
       include('./partials/registerForm'); -%> <%-
       include('./partials/feedback'); -%> <%- include('./partials/edit'); -%>
-      <%- include('./partials/social'); -%> <%-
-      include('./partials/createPost'); -%>
+      <%- include('./partials/createPost'); -%>
     </div>
   </body>
 </html>

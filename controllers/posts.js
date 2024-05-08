@@ -83,10 +83,19 @@ const addMessage = (req, res, next) => {
   const { body } = req.body;
   const author = req.session.name
     ? req.session.name
-    : req.session.passport.user.displayName;
+    : req.session.passport.user.name.familyName +
+      " " +
+      req.session.passport.user.name.givenName;
   const media = req.file ? req.file.originalname : "";
+  const select = req.session.select;
   let title = "message";
-  const whom = " ";
+  let whom;
+
+  if (req.session.role === "admin") {
+    whom = select;
+  } else {
+    whom = author;
+  }
 
   let storage = multer.diskStorage({
     destination: function (req, file, cb) {

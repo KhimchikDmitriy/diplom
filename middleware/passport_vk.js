@@ -21,7 +21,8 @@ function passportFunctionVK(passport) {
       {
         clientID: process.env.VK_CLIENT_ID,
         clientSecret: process.env.VK_CLIENT_SECRET,
-        callbackURL: "http://localhost:80/auth/vkontakte/callback",
+        callbackURL:
+          "http://localhost:" + process.env.PORT + "/auth/vkontakte/callback",
       },
       function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
