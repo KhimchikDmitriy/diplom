@@ -20,11 +20,11 @@
   </head>
   <body>
     <br />
-<a class="btn btn-success" href="/"> На главную страницу</a>
 <br />
 <% if (role === "admin") { %>
   <form action="/table" method="post">
     <select name="select">
+	<option value=" "> </option>
       <% entries.chat.forEach(function(entry) { %>
       <option value="<%= entry.name %>"><%= entry.name %></option>
       <% }) %>
@@ -47,7 +47,6 @@
           <a href="../uploads/<%= entry.media %>" download>Скачать файл</a>
           <% } %>
         </div>
-        <br />
         <% } %>
         <% } %>
         <% }); %>
@@ -62,11 +61,17 @@
             name="media"
           />
         </div>
-        
+        <a class="btn btn-success" href="/" style="margin-left: 25%;"> На главную страницу</a>
+
     </form>
+    
 </body>
 
+
+
   <style>
+
+
     form {
       width: 400px;
       margin: 20px auto;
@@ -140,6 +145,24 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+    }
+ 
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    body {
+      background: linear-gradient(135deg, #29601b 0%, #302b63 100%);
+      background-size: 200% auto;
+      animation: gradientAnimation 10s ease infinite;
     }
   </style>
 </html>

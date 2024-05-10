@@ -1,0 +1,96 @@
+<div class="card" style="margin: 15px">
+  <div class="card-header">Приветствуем Вас!</div>
+  <div class="card-body">
+    <h5 class="card-title">Для заказа работы потребуется связаться с нами</h5>
+    <p class="card-text">
+      Вы можете связаться с нами на нашем сайте здесь, авторизовавшись,
+      отправить нам сообщение через поддержку или связаться с нами через
+      социальные сети.
+    </p>
+    <p class="d-inline-flex gap-1" style="margin-left: 38%">
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <h5>
+          <i class="fa-brands fa-telegram"></i>
+        </h5>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample3"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <h5>
+          <i class="fa-brands fa-whatsapp"></i>
+        </h5>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample2"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <h5>
+          <i class="fa-brands fa-vk"> </i>
+        </h5>
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <p>Telegram:</p>
+        <p>@DimaHima</p>
+        <p>t.me/DimaHima</p>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body">
+        <p>Vkontakte:</p>
+        <p>@khimchik</p>
+        <p>vk.com/khimchik</p>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample3">
+      <div class="card card-body">
+        <p>WhatsApp:</p>
+        <p>+7(996)771-37-21</p>
+      </div>
+    </div>
+    <br />
+    <% if (role != "admin") { %>
+    <button
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#feedback"
+      style="margin-bottom: 15px; margin-left: 32%"
+    >
+      Связаться с поддержкой
+    </button>
+    <% } %> <% if (locals.user) { %> <% if (role === "admin") { %>
+    <a class="btn btn-success" href="/chat" style="margin-left: 39%">
+      Написать в ответ</a
+    >
+    <% } else {%>
+    <a class="btn btn-success" href="/chat" style="margin-left: 39%">
+      Написать нам</a
+    >
+    <% } %> <% } %>
+  </div>
+  <% if (locals.user) { %>
+  <a class="btn btn-success" href="/logout">Выйти</a>
+  <% } else { %>
+  <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login">
+    Войти
+  </a>
+  <% } %>
+</div>

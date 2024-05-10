@@ -9,7 +9,6 @@ import session from "express-session";
 import user_session from "./middleware/user_session.js";
 import messages from "./middleware/messages.js";
 import logger from "./logger/index.js";
-// import morgan from "morgan";
 import "dotenv/config.js";
 import cookieParser from "cookie-parser";
 import passport from "passport";
@@ -17,7 +16,6 @@ import passport from "passport";
 import passportFunctionYandex from "./middleware/passport_yandex.js";
 import passportFunctionGoogle from "./middleware/passport_goo.js";
 import passportFunctionVK from "./middleware/passport_vk.js";
-import mailFunction from "./middleware/mail.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -39,7 +37,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-// app.use(morgan("tiny"));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
 app.use(messages);
@@ -64,7 +61,6 @@ app.listen(port, () => {
   console.log("в данный момент используется версия " + app.get("env"));
   console.log("...");
   logger.info("Запуск сервера");
-  // mailFunction();
 });
 
 function addline(line) {

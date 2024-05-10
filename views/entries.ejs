@@ -20,83 +20,9 @@
   </head>
   <body>
     <br />
-    <div class="container">
-      <div style="max-width: 600px; margin-left: 25%">
-        <div class="card">
-          <div class="card-header">Приветствуем Вас!</div>
-          <div class="card-body">
-            <h5 class="card-title">
-              Для заказа работы потребуется связаться с нами
-            </h5>
-            <p class="card-text">
-              Вы можете связаться с нами на нашем сайте здесь, авторизовавшись,
-              отправить нам сообщение через поддержку или связаться с нами через
-              социальные сети.
-            </p>
-            <p class="d-inline-flex gap-1">
-              <button
-                class="btn btn-primary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="fa-brands fa-telegram"></i>
-              </button>
-              <button
-                class="btn btn-primary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample3"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="fa-brands fa-whatsapp"></i>
-              </button>
-              <button
-                class="btn btn-primary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample2"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="fa-brands fa-vk"> </i>
-              </button>
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                <p>Telegram:</p>
-                <p>@DimaHima</p>
-                <p>t.me/DimaHima</p>
-              </div>
-            </div>
-            <div class="collapse" id="collapseExample2">
-              <div class="card card-body">
-                <p>Vkontakte:</p>
-                <p>@khimchik</p>
-                <p>vk.com/khimchik</p>
-              </div>
-            </div>
-            <div class="collapse" id="collapseExample3">
-              <div class="card card-body">
-                <p>WhatsApp:</p>
-                <p>+7(996)771-37-21</p>
-              </div>
-            </div>
-            <br />
-          </div>
-          <% if (locals.user) { %>
-          <div class="btn" style="height: 50px">
-            <a class="btn btn-success" href="/chat"> Написать нам</a>
-          </div>
-          <% } %>
-          <div class="btn" style="height: 50px">
-            <%- include('./partials/canvas'); -%>
-          </div>
-        </div>
-      </div>
+
+    <div class="container" style="display: flex; height: 96vh">
+      <div style="max-width: 600px"><%- include('./partials/card'); -%></div>
       <% if (role === "admin") { %>
       <div>
         <button
@@ -108,29 +34,124 @@
           Cоздать пост
         </button>
       </div>
-      <% } %> <% entries.posts.forEach((entry) => { %> <% if (entry.title ===
-      "post") { %>
-      <div class="card-body">
-        <p>
-          <% if (role === "admin") { %>
-          <a href="posts/edit/<%= entry.id %>"
-            ><i class="fa-solid fa-pen" style="color: #000000"></i
-          ></a>
-          <a href="posts/delete/<%= entry.id %>"
-            ><i class="fa-solid fa-trash-can" style="color: #000000"></i
-          ></a>
-          <% } %>
-        </p>
-        <p><%= entry.body %></p>
-        <% if (entry.media) {%>
-        <img src="../uploads/<%= entry.media %>" class="message-image" />
-        <% } %>
+      <% } %>
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide"
+        style="width: 500px; height: 500px; margin: 15px"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card" style="width: 500px; height: 500px">
+              <div class="card-header">
+                <h6>Здесь вы можете посмотреть информацию о нас</h6>
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="width: 50%; margin-left: 25%">
+                  Вы можете связаться с нами на нашем сайте здесь,
+                  авторизовавшись, отправить нам сообщение через поддержку или
+                  связаться с нами через социальные сети.
+                </p>
+                <br />
+              </div>
+            </div>
+          </div>
+          <% entries.posts.forEach((entry) => { %> <% if (entry.title ===
+          "post") { %>
+          <div class="carousel-item">
+            <div class="card" style="width: 500px; height: 500px">
+              <% if (entry.media) {%>
+              <div class="card-header">
+                <h6 style="margin-left: 25%">
+                  <% if (role === "admin") { %>
+                  <a href="posts/edit/<%= entry.id %>"
+                    ><i class="fa-solid fa-pen" style="color: #000000"></i
+                  ></a>
+                  <a href="posts/delete/<%= entry.id %>"
+                    ><i class="fa-solid fa-trash-can" style="color: #000000"></i
+                  ></a>
+                  <% } %> <%= entry.body %>
+                </h6>
+              </div>
+              <div class="card-body" style="width: 400px; height: 400px">
+                <img
+                  src="../uploads/<%= entry.media %>"
+                  class="d-block w-100"
+                  alt="..."
+                />
+                <br />
+              </div>
+              <% } else {%>
+              <div class="card-header">
+                <h6 style="margin-left: 25%">
+                  <% if (role === "admin") { %>
+                  <a href="posts/edit/<%= entry.id %>"
+                    ><i class="fa-solid fa-pen" style="color: #000000"></i
+                  ></a>
+                  <a href="posts/delete/<%= entry.id %>"
+                    ><i class="fa-solid fa-trash-can" style="color: #000000"></i
+                  ></a>
+                  <% } %> Информация.
+                </h6>
+              </div>
+              <div
+                class="card-body"
+                style="width: 400px; height: 400px; margin-left: 25%"
+              >
+                <p><%= entry.body %></p>
+                <br />
+              </div>
+              <% } %>
+            </div>
+
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+
+          <% } %> <% }) %>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
       <br />
-      <% } %> <% }) %> <%- include('./partials/loginForm'); -%> <%-
+      <%- include('./partials/loginForm'); -%> <%-
       include('./partials/registerForm'); -%> <%-
       include('./partials/feedback'); -%> <%- include('./partials/edit'); -%>
       <%- include('./partials/createPost'); -%>
     </div>
+    <style>
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body {
+        background: linear-gradient(135deg, #29601b 0%, #302b63 100%);
+        background-size: 200% auto;
+        animation: gradientAnimation 10s ease infinite;
+      }
+    </style>
   </body>
 </html>
