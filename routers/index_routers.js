@@ -85,11 +85,6 @@ router.post("/login", login.submit);
 
 router.get("/logout", login.logout);
 
-router.get("/new", ensureAuthenticated, posts.form);
-router.post("/new", upload.single("media"), ensureAuthenticated, posts.addPost);
-
-router.get("/posts/edit/:id", sqlLogic.edit);
-router.post("/posts/edit/:id", sqlLogic.update);
 router.get("/posts/delete/:id", sqlLogic.deleted);
 
 router.get(
