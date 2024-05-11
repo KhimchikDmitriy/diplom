@@ -16,8 +16,14 @@ const mailFunction = (req, res, next) => {
     let mailOptions = {
       from: "dimahima14@gmail.com",
       to: "warcraftdimahima@gmail.com",
-      subject: name,
-      html: "Вам отправленно письмо от " + email + " с текстом: " + message,
+      subject: "Служба поддержки магазина студии.",
+      html:
+        "Вам отправленно письмо от: <br> " +
+        email +
+        ", " +
+        name +
+        "<br> с текстом: <br>" +
+        message,
     };
 
     transporter.sendMail(mailOptions, function (err, data) {
