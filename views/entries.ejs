@@ -23,18 +23,7 @@
 
     <div class="container" style="display: flex; height: 96vh">
       <div style="max-width: 600px"><%- include('./partials/card'); -%></div>
-      <% if (role === "admin") { %>
-      <div>
-        <button
-          type="button"
-          class="btn btn-light"
-          data-bs-toggle="modal"
-          data-bs-target="#createPost"
-        >
-          Cоздать пост
-        </button>
-      </div>
-      <% } %>
+
       <div
         id="carouselExampleDark"
         class="carousel carousel-dark slide"
@@ -44,17 +33,31 @@
           <div class="carousel-item active">
             <div class="card" style="width: 500px; height: 500px">
               <div class="card-header">
-                <h6>
-                  На этом слайдере представлены некоторые из наших работ. Мы
-                  надеемся, что они вдохновят вас и помогут понять, каким
-                  образом мы можем преобразить ваш бренд или мероприятие.
-                </h6>
+                <h6>Примеры наших работ.</h6>
               </div>
               <div class="card-body">
                 <p class="card-text" style="width: 50%; margin-left: 25%">
-                  На данном слайдере вы можете посмотреть примеры наших работ
+                  На этом слайдере представлены некоторые из наших работ. Мы
+                  надеемся, что они вдохновят вас и помогут понять, каким
+                  образом мы можем преобразить ваш бренд или мероприятие.
+                  <br />
+                  <br />
+                  Переключение слайдов производится через кнопки.
                 </p>
                 <br />
+                <% if (role === "admin") { %>
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createPost"
+                    style="margin-left: 35%"
+                  >
+                    Cоздать пост
+                  </button>
+                </div>
+                <% } %>
               </div>
             </div>
           </div>
