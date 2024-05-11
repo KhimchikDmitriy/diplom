@@ -5,6 +5,28 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
+  <script>
+    function validateForm() {
+      let email = document.getElementById("floatingInput").value;
+      let password = document.getElementById("floatingPassword").value;
+
+      if (email.indexOf("@") == -1) {
+        document.getElementById("errorMessage").style.display = "block";
+        document.getElementById("errorMessage").innerHTML =
+          "Некорректный email";
+        return false;
+      }
+
+      if (password.length < 8) {
+        document.getElementById("errorMessage").style.display = "block";
+        document.getElementById("errorMessage").innerHTML =
+          "Пароль должен быть не менее 8 символов";
+        return false;
+      }
+
+      return true;
+    }
+  </script>
   <div class="modal-dialog modal-xg">
     <div class="modal-content">
       <div class="modal-header">

@@ -1,20 +1,30 @@
 <div class="card" style="margin: 15px">
   <div class="card-header">Приветствуем Вас!</div>
   <div class="card-body">
-    <h5 class="card-title">Для заказа работы потребуется связаться с нами</h5>
+    <h5 class="card-title">Мазазин-студия по созданию анимаций.</h5>
     <p class="card-text">
-      Вы можете связаться с нами на нашем сайте здесь, авторизовавшись,
-      отправить нам сообщение через поддержку или связаться с нами через
-      социальные сети.
+      Добро пожаловать на наш сайт! Мы — небольшая студия-магазин, которая
+      специализируется на создании анимаций на заказ. Если вы хотите оживить
+      свой бренд, привлечь внимание аудитории или просто порадовать себя чем-то
+      новым и необычным, то вы попали по адресу.
+      <br />
+      Наша команда состоит из талантливых художников и аниматоров, которые
+      готовы воплотить ваши идеи в жизнь. Мы работаем с различными форматами и
+      стилями, чтобы каждый клиент мог получить именно то, что ему нужно.
+      <br />
+      На нашем сайте вы найдете примеры наших работ, информацию о ценах и сроках
+      выполнения заказов. Также мы всегда открыты для общения и готовы ответить
+      на все ваши вопросы.
+      <br />
+      Спасибо за интерес к нашей студии! Мы надеемся на плодотворное
+      сотрудничество!
     </p>
     <p class="d-inline-flex gap-1" style="margin-left: 39%">
       <button
         class="btn btn-primary"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseExample"
-        aria-expanded="false"
-        aria-controls="collapseExample"
+        data-bs-toggle="modal"
+        data-bs-target="#telegram"
       >
         <h5>
           <i class="fa-brands fa-telegram"></i>
@@ -23,10 +33,8 @@
       <button
         class="btn btn-primary"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseExample3"
-        aria-expanded="false"
-        aria-controls="collapseExample"
+        data-bs-toggle="modal"
+        data-bs-target="#whatsapp"
       >
         <h5>
           <i class="fa-brands fa-whatsapp"></i>
@@ -35,36 +43,14 @@
       <button
         class="btn btn-primary"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseExample2"
-        aria-expanded="false"
-        aria-controls="collapseExample"
+        data-bs-toggle="modal"
+        data-bs-target="#vk"
       >
         <h5>
           <i class="fa-brands fa-vk"> </i>
         </h5>
       </button>
     </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        <p>Telegram:</p>
-        <p>@DimaHima</p>
-        <p>t.me/DimaHima</p>
-      </div>
-    </div>
-    <div class="collapse" id="collapseExample2">
-      <div class="card card-body">
-        <p>Vkontakte:</p>
-        <p>@khimchik</p>
-        <p>vk.com/khimchik</p>
-      </div>
-    </div>
-    <div class="collapse" id="collapseExample3">
-      <div class="card card-body">
-        <p>WhatsApp:</p>
-        <p>+7(996)771-37-21</p>
-      </div>
-    </div>
     <br />
     <% if (role != "admin") { %>
     <button
@@ -93,4 +79,83 @@
     Войти
   </a>
   <% } %>
+</div>
+<div
+  class="modal fade"
+  id="telegram"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Telegram</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-body">
+          <p>Telegram:</p>
+          <p>@DimaHima</p>
+          <p>t.me/DimaHima</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="vk"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">VK</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="card card-body">
+        <p>Vkontakte:</p>
+        <p>@khimchik</p>
+        <p>vk.com/khimchik</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="whatsapp"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">WhatsApp</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="card card-body">
+        <p>WhatsApp:</p>
+        <p>+7(996)771-37-21</p>
+      </div>
+    </div>
+  </div>
 </div>

@@ -5,17 +5,6 @@ import logger from "../logger/index.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
-const form = (req, res) => {
-  res.render("registerForm", {
-    title: "Регистрация",
-    errorMessage: res.locals.errorMessage,
-  });
-  console.log("...");
-  console.log("заход на /register");
-  console.log("...");
-  logger.info("заход на страницу регистрации");
-};
-
 const submit = [
   validatePassword,
   (req, res, next) => {
@@ -34,11 +23,11 @@ const submit = [
       console.log("! ! !");
       console.log("! ! !");
       logger.error("Неправильно записан email");
-      return form(req, res);
+      res.redirect("/");
     }
 
     if (res.locals.errorMessage && res.locals.errorMessage.length > 0) {
-      return form(req, res);
+      res.redirect("/");
     }
 
     User.findByEmail(email, (err, user) => {
@@ -76,10 +65,9 @@ const submit = [
         console.log("Такой пользователь уже существует");
         console.log("...");
         logger.error("Такой пользователь уже существует");
-        return form(req, res);
       }
     });
   },
 ];
 
-export default { form, submit };
+export default { submit };

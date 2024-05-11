@@ -9,7 +9,7 @@ const list = (req, res, next) => {
       name: req.session.name,
       email: req.session.email,
       role: req.session.role,
-
+      errorMessage: res.locals.errorMessage,
       entries: entries,
     });
     console.log("...");

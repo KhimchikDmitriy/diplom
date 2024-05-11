@@ -3,11 +3,6 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
-const form = (req, res) => {
-  res.render("login", { title: "Login" });
-  console.log("...");
-  console.log("заход на /login");
-};
 const submit = (req, res, next) => {
   User.authenticate(req.body.loginForm, (err, data) => {
     //data is user
@@ -20,7 +15,7 @@ const submit = (req, res, next) => {
       console.log("! ! !");
       console.log("! ! !");
       logger.error("Ошибка ввода пароля");
-      return form(req, res);
+      res.redirect("/");
     }
     if (data) {
       req.session.email = data.email;
@@ -76,4 +71,4 @@ const logout = (req, res) => {
   });
 };
 
-export default { form, submit, logout };
+export default { submit, logout };

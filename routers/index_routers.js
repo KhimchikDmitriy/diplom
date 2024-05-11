@@ -77,10 +77,8 @@ router.post("/entries", entries.submit);
 router.get("/chat", chat.list);
 router.post("/chat", chat.submit);
 
-router.get("/register", register.form);
 router.post("/register", register.submit);
 
-router.get("/login", login.form);
 router.post("/login", login.submit);
 
 router.get("/logout", login.logout);
