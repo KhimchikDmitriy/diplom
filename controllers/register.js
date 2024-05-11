@@ -3,7 +3,6 @@ import validatePassword from "../middleware/validation.js";
 import validator from "validator";
 import logger from "../logger/index.js";
 import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
 
 const submit = [
   validatePassword,
