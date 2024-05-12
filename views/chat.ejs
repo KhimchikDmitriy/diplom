@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body style="height: 100vh;">
     <br />
 <br />
 <% if (role === "admin") { %>
@@ -32,9 +32,7 @@
     <input class="btn btn-success" type="submit" value="Выберите получателя" />
   </form>
   <% } %>
-  <br>
 <% entries.posts.forEach(function(entry) { %>
-  <br />
   <% if (entry.whom === user.name || entry.whom === user.name.familyName + " " + user.name.givenName || role === "admin" && entry.whom === select) { %>
     <% if (entry.title === "message") { %>
       <div class="message">
@@ -62,9 +60,7 @@
           />
         </div>
         <a class="btn btn-success" href="/" style="margin-left: 25%;"> На главную страницу</a>
-
     </form>
-    
 </body>
 
 
