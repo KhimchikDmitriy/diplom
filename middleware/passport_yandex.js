@@ -32,8 +32,6 @@ function passportFunctionYandex(passport) {
           // want to associate the Yandex account with a user record in your
           // database, and return that user instead.
           console.log("...");
-          console.log("...");
-          console.log("...");
           console.log("Полчили профиль от Яндекса");
           console.log("...");
           logger.info("Получили профиль от Яндекса.");

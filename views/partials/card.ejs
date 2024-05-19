@@ -55,109 +55,83 @@
       </button>
     </p>
     <br />
-    <% if (role != "admin") { %>
-    <button
-      type="button"
-      class="btn btn-success"
-      data-bs-toggle="modal"
-      data-bs-target="#feedback"
-      style="margin-bottom: 15px; margin-left: 32%"
-    >
-      Связаться с поддержкой
-    </button>
-    <% } %> <% if (locals.user) { %> <% if (role === "admin") { %>
-    <a class="btn btn-success" href="/chat" style="margin-left: 39%">
-      Написать в ответ</a
-    >
-    <% } else {%>
-    <a class="btn btn-success" href="/chat" style="margin-left: 39%">
-      Написать нам</a
-    >
-    <% } %> <% } %>
   </div>
-  <% if (locals.user) { %>
-  <a class="btn btn-success" href="/logout">Выйти</a>
-  <% } else { %>
-  <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login">
-    Войти
-  </a>
-  <% } %>
-</div>
-<div
-  class="modal fade"
-  id="telegram"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Telegram</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="card card-body">
-          <p>Telegram:</p>
-          <p>@DimaHima</p>
-          <p>t.me/DimaHima</p>
+  <div
+    class="modal fade"
+    id="telegram"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Telegram</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="card card-body">
+            <p>Telegram:</p>
+            <p>@DimaHima</p>
+            <p>t.me/DimaHima</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div
-  class="modal fade"
-  id="vk"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">VK</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="card card-body">
-        <p>Vkontakte:</p>
-        <p>@khimchik</p>
-        <p>vk.com/khimchik</p>
+  <div
+    class="modal fade"
+    id="vk"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">VK</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="card card-body">
+          <p>Vkontakte:</p>
+          <p>@khimchik</p>
+          <p>vk.com/khimchik</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div
-  class="modal fade"
-  id="whatsapp"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">WhatsApp</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="card card-body">
-        <p>WhatsApp:</p>
-        <p>+7(996)771-37-21</p>
+  <div
+    class="modal fade"
+    id="whatsapp"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">WhatsApp</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="card card-body">
+          <p>WhatsApp:</p>
+          <p>+7(996)771-37-21</p>
+        </div>
       </div>
     </div>
   </div>

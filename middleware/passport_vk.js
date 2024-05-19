@@ -27,8 +27,6 @@ function passportFunctionVK(passport) {
       function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
           console.log("...");
-          console.log("...");
-          console.log("...");
           console.log("Полчили профиль от vk");
           console.log("...");
           logger.info("Получили профиль от vk.");

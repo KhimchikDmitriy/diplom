@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Аниматор</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Переключатель навигации"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if (locals.user) { %>
+        <li class="nav-item">
+          <% if (role === "admin") { %>
+          <a class="nav-link active" href="/order">
+            Добавить категорию заказа</a
+          >
+          <% } else {%>
+          <a class="nav-link active" href="/order"> Заказать</a>
+          <% } %>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <button
+            type="button"
+            class="nav-link active"
+            data-bs-toggle="modal"
+            data-bs-target="#feedback"
+          >
+            Связаться с поддержкой
+          </button>
+        </li>
+        <% if (locals.user) { %>
+        <li class="nav-item">
+          <% if (role === "admin") { %>
+          <a class="nav-link active" href="/chat"> Написать в ответ</a>
+          <% } else {%>
+          <a class="nav-link active" href="/chat"> Написать нам</a>
+          <% } %>
+        </li>
+        <% } %> <% if (locals.user) { %>
+        <li class="nav-item">
+          <% if (role === "admin") { %>
+          <a class="nav-link active" href="/reservation"> Заказано</a>
+          <% } else {%>
+          <a class="nav-link active" href="/reservation"> Ваши заказы</a>
+          <% } %>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <% if (locals.user) { %>
+          <a class="nav-link active" href="/logout">Выйти</a>
+          <% } else { %>
+          <button
+            class="nav-link active"
+            data-bs-toggle="modal"
+            data-bs-target="#login"
+          >
+            Войти или зарегестрироваться
+          </button>
+          <% } %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
