@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title><%= title %></title>
     <link
@@ -38,28 +38,11 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
-    <br />
     <%- include('./partials/footer'); -%>
 
     <style>
-      @keyframes gradientAnimation {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
       body {
-        background: linear-gradient(135deg, #29601b 0%, #302b63 100%);
-        background-size: 200% auto;
-        animation: gradientAnimation 10s ease infinite;
+        background: url(./img/pattern-stripes-gaps-diag.svg);
       }
     </style>
   </body>
