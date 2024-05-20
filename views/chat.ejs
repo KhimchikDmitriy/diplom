@@ -33,6 +33,7 @@
     <input class="btn btn-success" type="submit" value="Выберите получателя" />
   </form>
   <% } %>
+  <div style="min-height: 50vh;">
 <% entries.posts.forEach(function(entry) { %>
   <% if (entry.whom === user.name || entry.whom === user.name.familyName + " " + user.name.givenName || role === "admin" && entry.whom === select) { %>
     <% if (entry.title === "message") { %>
@@ -64,7 +65,8 @@
         <% } %>
         <% } %>
         <% }); %>
-    <form action="/upload/message" method="post" enctype="multipart/form-data">
+      </div>
+    <form action="/upload/message" method="post" enctype="multipart/form-data" class="messGo">
         <input type="text" name="body" id="body" placeholder="Введите сообщение..." />
         <button type="submit">Отправить</button>
         <div class="mb-3">
@@ -77,91 +79,9 @@
         </div>
     </form>
     <br>
+    <br>
+
     <%- include('./partials/footer'); -%>
-
+    <%-include('./partials/feedback'); -%>
 </body>
-
-
-
-  <style>
-
-
-    form {
-      width: 400px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background: #f7f7f7;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    button[type="submit"] {
-      width: 100%;
-      padding: 10px 20px;
-      font-size: 16px;
-      color: white;
-      background-color: #3498db;
-      border: none;
-      cursor: pointer;
-      border-radius: 3px;
-      transition: background-color 0.3s;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #2980b9;
-    }
-
-    input[type="file"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    .message {
-      margin-bottom: 20px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background: #f7f7f7;
-    }
-
-    .message .delete-link {
-      float: right;
-    }
-
-    .message .message-body {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .message img.message-image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
- 
-    body {
-      background: url(./img/pattern-dashes-and-dotes-diag.svg);
-    }
-  </style>
 </html>

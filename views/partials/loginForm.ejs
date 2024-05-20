@@ -5,28 +5,6 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <script>
-    function validateForm() {
-      let email = document.getElementById("floatingInput").value;
-      let password = document.getElementById("floatingPassword").value;
-
-      if (email.indexOf("@") == -1) {
-        document.getElementById("errorMessage").style.display = "block";
-        document.getElementById("errorMessage").innerHTML =
-          "Некорректный email";
-        return false;
-      }
-
-      if (password.length < 8) {
-        document.getElementById("errorMessage").style.display = "block";
-        document.getElementById("errorMessage").innerHTML =
-          "Пароль должен быть не менее 8 символов";
-        return false;
-      }
-
-      return true;
-    }
-  </script>
   <div class="modal-dialog modal-xg">
     <div class="modal-content">
       <div class="modal-header">
@@ -49,7 +27,9 @@
                 id="floatingInput"
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Введите адрес электронной почты</label>
+              <label for="floatingInput" style="margin-left: 15px"
+                >Введите адрес электронной почты</label
+              >
             </div>
           </div>
           <div class="row my-3">
@@ -61,7 +41,9 @@
                 id="floatingPassword"
                 placeholder="password"
               />
-              <label for="floatingPassword">Введите пароль</label>
+              <label for="floatingPassword" style="margin-left: 15px"
+                >Введите пароль</label
+              >
             </div>
           </div>
           <div class="row my-3">
@@ -86,3 +68,24 @@
     </div>
   </div>
 </div>
+<script>
+  function validateForm() {
+    let email = document.getElementById("floatingInput").value;
+    let password = document.getElementById("floatingPassword").value;
+
+    if (email.indexOf("@") == -1) {
+      document.getElementById("errorMessage").style.display = "block";
+      document.getElementById("errorMessage").innerHTML = "Некорректный email";
+      return false;
+    }
+
+    if (password.length < 8) {
+      document.getElementById("errorMessage").style.display = "block";
+      document.getElementById("errorMessage").innerHTML =
+        "Пароль должен быть не менее 8 символов";
+      return false;
+    }
+
+    return true;
+  }
+</script>
