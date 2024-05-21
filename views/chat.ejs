@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body style="height: 100vh;">
+  <body style="height: 100vh; width: 75%; margin-left: 12.5%">
     <%- include('./partials/header'); -%>
     <br />
 <br />
@@ -30,10 +30,10 @@
       <option value="<%= entry.name %>"><%= entry.name %></option>
       <% }) %>
     </select>
-    <input class="btn btn-success" type="submit" value="Выберите получателя" />
+    <input class="btn btn-light" type="submit" value="Выберите получателя" />
   </form>
   <% } %>
-  <div style="min-height: 50vh;">
+  <div style="min-height: 45vh;">
 <% entries.posts.forEach(function(entry) { %>
   <% if (entry.whom === user.name || entry.whom === user.name.familyName + " " + user.name.givenName || role === "admin" && entry.whom === select) { %>
     <% if (entry.title === "message") { %>
@@ -41,23 +41,25 @@
         <p class="delete-link">
           <a href="posts/delete/<%= entry.id %>"><i class="fa-solid fa-trash-can"></i></a>
         </p>
-        <p class="message-body"><p> <%= entry.author %></p><%= entry.body %></p>
+        <p class="message-body" ><p> </p><%= entry.author %>: <br> <%= entry.body %></p>
         <% if (entry.media) { %>
           <img src="../uploads/<%= entry.media %>" class="message-image" />
           <a href="../uploads/<%= entry.media %>" download>Скачать файл</a>
           <% } %>
         </div>
-        <% if (user.name === entry.author) { %>
+        <% if (user.name === entry.author || user.name.familyName + " " + user.name.givenName ===entry.author ) { %>
           <style>
             .message<%= entry.id %>{
-                width: 800px;
-                margin-left: 50%;
+              padding-left: 10px;
+              width: 500px;
+              margin-left: 50%;
               }
           </style>
           <% } else { %>
             <style>
               .message<%= entry.id %>{
-              width: 800px;
+              padding-left: 10px;
+              width: 500px;
               margin-left: 5%;
             }
             </style>

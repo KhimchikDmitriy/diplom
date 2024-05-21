@@ -18,26 +18,22 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body style="width: 75%; margin-left: 12.5%">
     <%- include('./partials/header'); -%>
-    <br />
-
-    <div class="container" style="display: flex">
-      <div><%- include('./partials/card'); -%></div>
+    <div
+      class="container"
+      style="display: flex; justify-content: space-between"
+    >
+      <br />
+      <div style="margin-top: 5%; margin-bottom: 5%">
+        <%- include('./partials/card'); -%>
+      </div>
       <br />
       <%- include('./partials/loginForm'); -%> <%-
       include('./partials/registerForm'); -%> <%-
       include('./partials/feedback'); -%> <%- include('./partials/createPost');
       -%>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <%- include('./partials/footer'); -%>
 
     <style>

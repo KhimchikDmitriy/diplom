@@ -47,12 +47,12 @@
             </div>
           </div>
           <div class="row my-3">
-            <div class="col-sm-6 col-12">
+            <div class="col-sm-6 col-12" style="width: 100%">
               <button type="submit" class="btn btn-success">Войти</button>
             </div>
           </div>
         </form>
-        <div>
+        <div style="display: flex; justify-content: center">
           <button
             type="button"
             class="btn btn-light"
@@ -62,7 +62,9 @@
             Зарегистрироваться на сайте
           </button>
         </div>
-        <div style="margin: 15px">Войти через социальные сети:</div>
+        <div style="margin: 15px; display: flex; justify-content: center">
+          Войти через социальные сети:
+        </div>
         <%- include('./social'); -%>
       </div>
     </div>
