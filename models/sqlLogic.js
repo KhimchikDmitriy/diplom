@@ -1,6 +1,8 @@
 import connection from "./sql.js";
 import mysql from "mysql";
 import logger from "../logger/index.js";
+import { join } from "path";
+import fs from "fs";
 
 const update = (req, res) => {
   const sql = "UPDATE posts SET body = ? WHERE id = ?";
@@ -24,6 +26,20 @@ const update = (req, res) => {
   });
 };
 const deleted = (req, res) => {
+  connection.query(
+    "SELECT media FROM posts WHERE id = ?",
+    [req.params.id],
+    (err, result) => {
+      const track = result[0];
+      const mediaPath = join("./public/uploads/", track.media);
+      fs.unlink(mediaPath, (err) => {
+        if (err) {
+          console.log(err);
+          console.error(`Ошибка удаления файла: ${mediaPath}`);
+        }
+      });
+    }
+  );
   const sql = "DELETE FROM posts WHERE id = ?";
   connection.query(sql, [req.params.id], (err, result) => {
     if (err) {

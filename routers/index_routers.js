@@ -8,12 +8,12 @@ import chat from "../controllers/chat.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import sqlLogic from "../models/sqlLogic.js";
+import Entry from "../models/entry.js";
 import logger from "../logger/index.js";
 import passport from "passport";
 import ensureAuthenticated from "../middleware/isAuthenticated.js";
 import multer from "multer";
 import mail from "../middleware/mail.js";
-import { title } from "process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -52,6 +52,24 @@ router.post("/mailSupport", mail.mailFunction);
 router.use(favicon(__dirname + "/favicon.ico"));
 
 router.get("/", entries.list);
+
+router.get("/oursWorks", (req, res) => {
+  Entry.selectAll((err, entries) => {
+    if (err) return next(err);
+    res.render("oursWorks", {
+      title: "Главная страница",
+      name: req.session.name,
+      email: req.session.email,
+      role: req.session.role,
+      errorMessage: res.locals.errorMessage,
+      entries: entries,
+    });
+    console.log("...");
+    console.log("заход на /ourWorks");
+    console.log("...");
+    logger.info("Заход на страницу работ");
+  });
+});
 
 router.get("/entries", entries.form, (req, res) => {
   posts.getPosts((err, posts) => {

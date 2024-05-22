@@ -24,37 +24,40 @@
           enctype="multipart/form-data"
         >
           <div class="row my-3">
-            <div class="col-sm-6 col-12">
-              <div class="form-floating">
-                <textarea
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                name="body"
+                id="body"
+                placeholder="Content"
+                style="resize: none"
+                required
+              ></textarea>
+              <label for="body" style="margin-left: 15px"
+                >Введите название слайда</label
+              >
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="form-floating">
+              <div class="mb-3">
+                <input
                   class="form-control"
-                  name="body"
-                  id="body"
-                  placeholder="Content"
-                  required
-                ></textarea>
-                <label for="body">Введите название слайда</label>
+                  type="file"
+                  id="media"
+                  name="media"
+                />
               </div>
             </div>
           </div>
           <div class="row my-3">
-            <div class="col-sm-6 col-12">
-              <div class="form-floating">
-                <div class="mb-3">
-                  <input
-                    class="form-control"
-                    type="file"
-                    id="media"
-                    name="media"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row my-3">
-            <div class="col-sm-6 col-12">
-              <button type="submit" class="btn btn-success">Запостить</button>
-            </div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              style="width: 95%; margin-left: 2.5%"
+            >
+              Запостить
+            </button>
           </div>
         </form>
       </div>

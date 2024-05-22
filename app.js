@@ -12,7 +12,6 @@ import logger from "./logger/index.js";
 import "dotenv/config.js";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-// import passportFunction from "./middleware/passport.js";
 import passportFunctionYandex from "./middleware/passport_yandex.js";
 import passportFunctionGoogle from "./middleware/passport_goo.js";
 import passportFunctionVK from "./middleware/passport_vk.js";
