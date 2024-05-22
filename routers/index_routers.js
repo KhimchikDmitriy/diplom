@@ -57,7 +57,7 @@ router.get("/oursWorks", (req, res) => {
   Entry.selectAll((err, entries) => {
     if (err) return next(err);
     res.render("oursWorks", {
-      title: "Главная страница",
+      title: "Наши работы",
       name: req.session.name,
       email: req.session.email,
       role: req.session.role,
