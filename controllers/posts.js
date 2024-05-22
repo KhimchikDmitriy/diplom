@@ -69,7 +69,7 @@ const addPost = (req, res, next) => {
         console.log("! ! !");
         logger.error("Ошибка создания поста");
       } else {
-        res.redirect("/");
+        res.redirect("/oursWorks");
         console.log("...");
         console.log("успешное создание поста");
         console.log("...");

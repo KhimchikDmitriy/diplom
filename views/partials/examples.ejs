@@ -29,9 +29,9 @@
 </div>
 <br />
 
-<div style="display: flex; justify-content: space-around">
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap">
   <% entries.posts.forEach((entry) => { %> <% if (entry.title === "post") { %>
-  <div class="card" style="width: 400px; height: 400px">
+  <div class="card" style="width: 400px; height: 400px; margin-bottom: 20px">
     <% if (entry.media) {%>
     <div class="card-header text-center">
       <h5>
@@ -48,7 +48,6 @@
         class="d-block w-100"
         alt="..."
       />
-      <br />
     </div>
     <% } else {%>
     <div class="card-header text-center">
@@ -65,7 +64,6 @@
       style="width: 400px; height: 400px; margin-left: 25%"
     >
       <p><%= entry.body %></p>
-      <br />
     </div>
     <% } %>
   </div>
