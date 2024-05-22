@@ -110,7 +110,7 @@ router.get(
 );
 router.get(
   "/auth/yandex/callback",
-  passport.authenticate("yandex", { failureRedirect: "/login" }),
+  passport.authenticate("yandex", { failureRedirect: "/" }),
   (req, res, next) => {
     res.redirect("/");
   }
@@ -124,7 +124,7 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/",
   }),
   (req, res, next) => {
     res.redirect("/");
@@ -136,7 +136,7 @@ router.get(
   "/auth/vkontakte/callback",
   passport.authenticate("vkontakte", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/",
   })
 );
 
