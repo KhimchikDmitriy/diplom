@@ -34,7 +34,6 @@ const submit = [
       if (!user) {
         User.create(req.body, (err) => {
           if (err) return next(err);
-          res.redirect("/");
           console.log("...");
           console.log("произведена регестрация");
           console.log("...");
@@ -52,6 +51,56 @@ const submit = [
           );
           console.log("...");
           console.log("токен подготовлен");
+        });
+        User.authenticate(req.body, (err, data) => {
+          //data is user
+          if (err) return next(err);
+          if (!data) {
+            console.log("! ! !");
+            console.log("! ! !");
+            console.log("! ! !");
+            console.log("Имя или пароль неверны!");
+            console.log("! ! !");
+            console.log("! ! !");
+            logger.error("Ошибка ввода пароля");
+            res.redirect("/");
+          }
+          if (data) {
+            req.session.email = data.email;
+            req.session.name = data.name;
+            req.session.password = data.password;
+            req.session.role = data.role;
+            console.log("...");
+            console.log("Всё верно!");
+            console.log("...");
+            logger.info(
+              "Заход произведён" + " " + data.name + " " + data.email
+            );
+
+            //jwt
+            const token = jwt.sign(
+              {
+                email: data.email,
+              },
+              process.env.JWTTOKENSECRET,
+              {
+                expiresIn: process.env.JWTTOKENTIME,
+              }
+            );
+            console.log("...");
+            console.log("токен подготовлен");
+
+            //jwt cookie
+            res.cookie("jwt", token, {
+              httpOnly: true,
+              secure: true,
+              maxAge: 3600000,
+            });
+            console.log("...");
+            console.log("куки подготовлен");
+
+            res.redirect("/");
+          }
         });
       } else {
         console.log("! ! !");
