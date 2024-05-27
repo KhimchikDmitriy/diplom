@@ -71,27 +71,6 @@ router.get("/oursWorks", (req, res) => {
   });
 });
 
-router.get("/entries", entries.form, (req, res) => {
-  posts.getPosts((err, posts) => {
-    if (err) {
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("ошибка ");
-      console.log("! ! !");
-      console.log("! ! !");
-      logger.error("Ошибка захода на страницу");
-      console.log(err.message);
-    } else {
-      res.render("main", {
-        title: "Главная страница",
-        posts: posts,
-      });
-    }
-  });
-});
-router.post("/entries", entries.submit);
-
 router.get("/chat", chat.list);
 router.post("/chat", chat.submit);
 

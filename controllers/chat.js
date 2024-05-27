@@ -6,7 +6,7 @@ const list = (req, res, next) => {
   Entry.selectAll((err, entries) => {
     if (err) return next(err);
     res.render("chat", {
-      title: "chat",
+      title: "чат",
       name: req.session.name,
       email: req.session.email,
       role: req.session.role,
