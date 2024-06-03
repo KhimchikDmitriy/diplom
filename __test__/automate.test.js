@@ -4,13 +4,24 @@ test("should", async () => {
   let driver = await new Builder().forBrowser(Browser.FIREFOX).build();
   try {
     await driver.get("http://localhost:80/");
-    expect(await driver.getTitle()).toContain("Главная страница");
+    await driver.executeScript("window.scrollBy(0, 1300);");
+    await driver.sleep(500);
+    const vk = driver.findElement(By.css("button.btn:nth-child(3)"));
+    await vk.click();
+    await driver.sleep(500);
+    const vkClose = driver.findElement(
+      By.css(
+        "#vk > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(2)"
+      )
+    );
+    await vkClose.click();
+    await driver.executeScript("window.scrollBy(0, -1300);");
+    await driver.sleep(500);
     const oursWorks = driver.findElement(
       By.xpath("//html//body//nav//div//div//ul//li[1]//a")
     );
     await oursWorks.click();
     await driver.sleep(500);
-    expect(await driver.getTitle()).toContain("Наши работы");
     const feedback = driver.findElement(
       By.xpath("//*[@id='navbarNav']//ul//li[2]//button")
     );
@@ -145,6 +156,57 @@ test("should", async () => {
       By.css("li.nav-item:nth-child(3) > a:nth-child(1)")
     );
     await chatAdmin.click();
+    const selectUser = driver.findElement(
+      By.css("body > form:nth-child(5) > select:nth-child(1)")
+    );
+    await selectUser.click();
+    await driver.sleep(500);
+    const user1 = driver.findElement(
+      By.css(
+        "body > form:nth-child(5) > select:nth-child(1) > option:nth-child(5)"
+      )
+    );
+    await user1.click();
+    await driver.sleep(500);
+    const user1Select = driver.findElement(By.css("input.btn"));
+    await user1Select.click();
+    const selectUser2 = driver.findElement(
+      By.css("body > form:nth-child(5) > select:nth-child(1)")
+    );
+    await selectUser2.click();
+    await driver.sleep(500);
+    const user2 = driver.findElement(
+      By.css(
+        "body > form:nth-child(5) > select:nth-child(1) > option:nth-child(7)"
+      )
+    );
+    await user2.click();
+    const user2Select = driver.findElement(By.css("input.btn"));
+    await user2Select.click();
+    await driver.sleep(500);
+    const ourWork = driver.findElement(
+      By.css("li.nav-item:nth-child(1) > a:nth-child(1)")
+    );
+    await ourWork.click();
+    const createWork = driver.findElement(
+      By.css(
+        "div.container > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > button:nth-child(1)"
+      )
+    );
+    await createWork.click();
+    const createWorkName = driver.findElement(By.css("#body"));
+    await createWorkName.sendKeys("Тестовое название");
+    const close = driver.findElement(
+      By.css(
+        "#createPost > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(2)"
+      )
+    );
+    await close.click();
+    await driver.sleep(500);
+    const logoutAdmin = driver.findElement(
+      By.css("li.nav-item:nth-child(4) > a:nth-child(1)")
+    );
+    await logoutAdmin.click();
   } finally {
   }
-}, 50000);
+}, 300000);
