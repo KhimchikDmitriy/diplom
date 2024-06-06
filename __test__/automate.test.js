@@ -1,6 +1,6 @@
 const { Builder, Browser, By, Key, until } = require("selenium-webdriver");
 
-test("should", async () => {
+test("webTest", async () => {
   let driver = await new Builder().forBrowser(Browser.FIREFOX).build();
   try {
     await driver.get("http://localhost:80/");
@@ -209,5 +209,6 @@ test("should", async () => {
     );
     await logoutAdmin.click();
   } finally {
+    await driver.close();
   }
 }, 300000);
